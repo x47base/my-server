@@ -36,15 +36,6 @@ router.post("/login", async (req, res) => {
 
 router.get("/login-status", (req, res) => {
   if (req.session.authToken) {
-    async function GetData() {
-      await noblox.setCookie(req.session.authToken)
-      const user = await noblox.getCurrentUser()
-      return {
-        username: user.UserName,
-        profileImageUrl: user.ThumbnailUrl
-      }
-    }
-    const d1 = GetData()
     res.send({
       status: true
     })
@@ -55,22 +46,9 @@ router.get("/login-status", (req, res) => {
 
 router.get("/user-info", async (req, res) => {
   if (req.session.authToken) {
-    async function GetData() {
-      await noblox.setCookie(req.session.authToken)
-      const user = await noblox.getCurrentUser()
-      const username = user.UserName
-      const userId = user.UserID
-      var thumbnailUrl = ""
+    const userInfo = {
       
-      // Use userId to fetch thumbnail URL
-      const response = await fetch("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" + `${userId}` + "&size=50x50&format=Png&isCircular=false", { method: 'GET' });
-      const data = await response.json();
-      thumbnailUrl = data.data.at(0).imageUrl;
-      
-      return { username, thumbnailUrl }
-    }
-    
-    const userInfo = await GetData();
+    };
     res.send(JSON.stringify(userInfo));
   } else {
     res.status(401).send("You must be logged in to access this information");
@@ -79,15 +57,7 @@ router.get("/user-info", async (req, res) => {
 
 router.get("/user-id", async (req, res) => {
   if (req.session.authToken) {
-    async function GetData() {
-      await noblox.setCookie(req.session.authToken)
-      const user = await noblox.getCurrentUser()
-      const userId = user.UserID
-      
-      return { userId }
-    }
-    
-    const userInfo = await GetData();
+    const userInfo = {};
     res.send(JSON.stringify(userInfo));
   } else {
     res.status(401).send("You must be logged in to access this information");

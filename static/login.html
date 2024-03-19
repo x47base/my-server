@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <title>Gambling Login</title>
+    <meta charset="UTF-8" />
+    <!--=============== BOXICONS ===============-->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+
+    <link href="..//styles/mainstyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="loading-screen">
+        <div id="loading-content">
+            <img src="../images/loading.gif" id="loading-gif">
+        </div>
+    </div>
+
+    <div id="header">
+        <div id="balance">
+            <span id="balance-label">Balance:</span>
+            <span id="balance-value"></span>
+        </div>        
+        <div id="username"></div>
+        <img id="thumbnail" />
+        <button id="logout" onClick="logout()"><i class='bx bx-log-out'></i> Logout</button>
+    </div>
+    <form id="login-form">
+        <input type="text" id="username-input" placeholder="Username" value="" min="4" max="16" />
+        <input type="password" id="password-input" placeholder="Password" value="" min="8" max="24" />
+        <button>Login</button>
+    </form>
+    <script src="../scripts/logi.js"></script>
+    
+    <!-- TO REMOVE AT END -->
+    <!--
+    <script>
+        document.getElementById("username").innerHTML = "DbomDev";
+        document.getElementById("thumbnail").src = "https://tr.rbxcdn.com/79b261a67941f5c8dfec40e7fcd51989/150/150/AvatarHeadshot/Png";
+        document.getElementById("password-input").value = "";
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("header").style.display = "block";
+        document.getElementById("balance-value").innerHTML = 0;
+    </script>
+-->
+</body>
+
+</html>

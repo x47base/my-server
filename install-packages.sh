@@ -1,0 +1,1 @@
+npm i express cookie-parser cors path node-fetch
